@@ -123,7 +123,7 @@ export default function GifConverter({ onConversionComplete }: GifConverterProps
 
       await ffmpeg.exec(command);
 
-      const data = await ffmpeg.readFile(outputFileName);
+      const data = await ffmpeg.readFile(outputFileName) as BlobPart;
       const gifUrl = URL.createObjectURL(new Blob([data], { type: 'image/gif' }));
       setConvertedGif(gifUrl);
       onConversionComplete?.(gifUrl);

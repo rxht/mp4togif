@@ -3,6 +3,7 @@
 out/
 build/
 dist/
+mp4togif/
 
 # 依赖
 node_modules/
