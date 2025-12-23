@@ -16,7 +16,7 @@ export function Header({ showFullNavigation = false }: HeaderProps) {
         <nav className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/icon1.png"
+              src="./icon1.png"
               alt="MP4 to GIF Logo"
               width={40}
               height={40}

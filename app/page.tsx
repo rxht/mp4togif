@@ -3,7 +3,6 @@
 import React from 'react';
 import { useAnalytics } from '@/components/AnalyticsScripts';
 import GifConverter from '@/components/GifConverter';
-import Link from 'next/link';
 import {
   Upload,
   Download,
@@ -22,7 +21,7 @@ import {
 } from 'lucide-react';
 
 export default function HomePage() {
-  const { trackConversionStart, trackConversionComplete } = useAnalytics();
+  const { trackConversionComplete } = useAnalytics();
 
   const handleConversionComplete = (gifUrl: string) => {
     trackConversionComplete(0, 0); // We'll update this with actual file size and duration later

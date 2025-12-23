@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: '/mp4togif',
   output: 'export', // 为 Cloudflare Pages 添加静态导出
   experimental: {
     optimizeCss: true,
@@ -16,6 +17,15 @@ const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   swcMinify: true,
+  // 禁用开发环境的性能分析（默认开启会增加启动时间）
+  devIndicators: {
+    buildActivity: false,
+    buildActivityPosition: 'bottom-right',
+  },
+  // 禁用 React 严格模式（避免开发环境双重渲染，减少启动耗时）
+  reactStrictMode: false,
+  // 关闭字体优化（开发环境无需预加载字体）
+  optimizeFonts: false
 };
 
 module.exports = nextConfig;

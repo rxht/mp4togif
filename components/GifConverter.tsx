@@ -7,11 +7,8 @@ import {
   Upload,
   Download,
   Play,
-  CheckCircle,
-  Clock,
   AlertCircle,
   FileVideo,
-  Settings,
   X,
   Loader2,
 } from 'lucide-react';
@@ -33,6 +30,7 @@ export default function GifConverter({ onConversionComplete }: GifConverterProps
   const [duration, setDuration] = useState<number>(5);
   const [quality, setQuality] = useState<number>(10); // Corresponds to ffmpeg crf
   const [fps, setFps] = useState<number>(10);
+  const [width, setWidth] = useState<number>(720);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const loadFfmpeg = useCallback(async () => {
@@ -43,7 +41,7 @@ export default function GifConverter({ onConversionComplete }: GifConverterProps
     ffmpegInstance.on('progress', ({ progress }) => {
       setProgress(Math.round(progress * 100));
     });
-    const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd'
+    const baseURL = window.location.href
     await ffmpegInstance.load({
         coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
         wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
@@ -117,7 +115,7 @@ export default function GifConverter({ onConversionComplete }: GifConverterProps
       const command: [string, ...string[]] = [
         '-i', inputFileName,
         '-t', String(duration),
-        '-vf', `fps=${fps},scale=480:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse`,
+        '-vf', `fps=${fps},scale=${width}:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse`,
         '-loop', '0',
         '-crf', String(crf),
         outputFileName
@@ -259,6 +257,21 @@ export default function GifConverter({ onConversionComplete }: GifConverterProps
                   <option value="5">5 FPS</option>
                   <option value="10">10 FPS</option>
                   <option value="15">15 FPS</option>
+                </select>
+              </div>
+              
+              <div className="sm:col-span-2 lg:col-span-1">
+                <label className="text-sm font-medium text-gray-700">GIF Width (PIXEL)</label>
+                <select
+                  value={width}
+                  onChange={(e) => setWidth(Number(e.target.value))}
+                  className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-base"
+                >
+                  <option value="480">480 PIXEL</option>
+                  <option value="720">720 PIXEL</option>
+                  <option value="1080">1080 PIXEL</option>
+                  <option value="1920">1920 PIXEL</option>
+                  <option value="2160">2160 PIXEL</option>
                 </select>
               </div>
             </div>

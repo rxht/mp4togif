@@ -59,7 +59,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://mp4togif.pro/',
   },
-  manifest: '/manifest.json',
   openGraph: {
     title: 'MP4 to GIF Converter - Free Online Video to GIF Tool',
     description: 'Convert MP4 videos to high-quality animated GIFs instantly. Free online tool with no signup, no watermarks, and unlimited conversions. Perfect for social media, memes, and marketing.',
@@ -289,7 +288,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -297,14 +296,14 @@ export default function RootLayout({
             __html: JSON.stringify(structuredData),
           }}
         />
-        <link rel="icon" href="/icon1.png" type="image/svg+xml" />
+        <link rel="icon" href="./icon1.png" type="image/svg+xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.clarity.ms" />
-        <link rel="preload" href="/gif.worker.js" as="script" />
+        {/* <link rel="preload" href="/gif.worker.js" as="script" /> */}
       </head>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
         <div className="flex min-h-screen flex-col bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
           <Header />
           <main className="flex-1">{children}</main>
