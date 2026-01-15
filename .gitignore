@@ -1,0 +1,53 @@
+# 构建输出
+.next/
+out/
+build/
+dist/
+
+# 依赖
+node_modules/
+/.pnp
+.pnp.js
+
+# 测试
+/coverage
+
+# 环境变量
+.env*.local
+.env
+.env.example
+
+# 其他
+.DS_Store
+*.pem
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 编辑器和IDE配置
+.idea/
+.vscode/
+.claude/
+*.swp
+*.swo
+
+# Cloudflare
+.wrangler/
+.dev.vars
+
+# 调试
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# 临时文件
+*.tmp
+*.temp
+.cache/
+
+# 操作系统
+Thumbs.db

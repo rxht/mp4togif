@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow: /favicon.ico
+Disallow: /manifest.json
+
+Sitemap: https://mp4togif.pro/sitemap.xml
