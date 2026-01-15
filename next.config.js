@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   basePath: '/mp4togif',
+  assetPrefix: '/mp4togif/',
   output: 'export', // 为 Cloudflare Pages 添加静态导出
   experimental: {
     optimizeCss: true,
