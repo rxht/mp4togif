@@ -9,7 +9,7 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "preview": "npx next build && npx serve out",
-    "deploy": "npx next build && wrangler pages deploy out",
+    "deploy": "npx next build && gh-pages -d out --dotfiles",
     "cf:login": "wrangler login",
     "cf:tail": "wrangler tail",
     "cf:dev": "wrangler dev"
@@ -41,6 +41,7 @@
     "autoprefixer": "^10.4.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.0",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.0",
     "prettier": "^3.2.0",
     "prettier-plugin-tailwindcss": "^0.5.14",
